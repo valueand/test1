@@ -6,7 +6,7 @@
 int main() 
 {
     int a, b, c;  // 存储三条线段的长度
-
+    printf("请输入三个整数\n");
     // 通过scanf获取输入的三个整数
     scanf("%d %d %d", &a, &b, &c);
 
