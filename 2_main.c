@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 int main() {
+    
     int score;
     // 输入成绩
     scanf("%d", &score);
