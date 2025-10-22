@@ -4,16 +4,12 @@
 #include <stdio.h>
 int main()
 {
-	//三角形判定
-	printf("请输入三个整数\n");
-	int x,y,z;
-	scanf ("%d %d %d",&x,&y,&z);
-	if (x+y <= z || x+z <= y || y+z <= x ){
-		printf("不能组成三角形\n");
-	}
-	else{
-		printf("可以组成三角形");
-	}
-	return 0;
-	//三角形判定
+    int a, b, c;
+    printf("请输入三角形的三边长(整数)：");
+    scanf("%d %d %d", &a, &b, &c);
+    if (a + b > c && a + c > b && b + c > a)
+        printf("能构成三角形");
+    else
+        printf("不能构成三角形");
+    return 0;
 }
