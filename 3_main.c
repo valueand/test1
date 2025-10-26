@@ -3,36 +3,34 @@
 //张博阳
 #include <stdio.h>
 
+int main() {
+    int num = 100;  // 从100开始遍历
+    int hundreds, tens, units;
+    int count = 0;  // 控制空格输出
 
-int main() 
-{
-    int a, b;
-    char op;  // 用于存储运算符
+    // while循环遍历100到999
+    while (num <= 999) {
+        // 拆分百位、十位、个位
+        hundreds = num / 100;
+        tens = (num / 10) % 10;
+        units = num % 10;
 
-    // 输入两个整数和运算符（格式如：3 5 +）
-    scanf("%d %d %c", &a, &b, &op);
+        // 判断水仙花数（各位立方和等于自身）
+        if (hundreds * hundreds * hundreds + 
+            tens * tens * tens + 
+            units * units * units == num) {
+            
+            // 控制空格：首个数字前无空格，后续加空格
+            if (count > 0) {
+                printf(" ");
+            }
+            printf("%d", num);
+            count++;
+        }
 
-    // 根据运算符进行计算
-    if (op == '+') 
-    {
-        printf("%d\n", a + b);
-    } 
-    else if (op == '-') 
-    {
-        printf("%d\n", a - b);
+        num++;  // 循环变量自增
     }
-    else if (op == '*') 
-    {
-        printf("%d\n", a * b);
-    } 
-    else if (op == '/') 
-    {
-        
-          if (b != 0) 
-          {
-                  printf("%d\n", a / b);  
-          }
-       
-    }
+    printf("\n");  // 结束后换行
+
     return 0;
 }
