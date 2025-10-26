@@ -4,33 +4,32 @@
 #include <stdio.h>
 
 int main() {
-    int num = 100;  // 从100开始遍历
-    int hundreds, tens, units;
-    int count = 0;  // 控制空格输出
-
-    // while循环遍历100到999
-    while (num <= 999) {
-        // 拆分百位、十位、个位
-        hundreds = num / 100;
-        tens = (num / 10) % 10;
-        units = num % 10;
-
-        // 判断水仙花数（各位立方和等于自身）
-        if (hundreds * hundreds * hundreds + 
-            tens * tens * tens + 
-            units * units * units == num) {
-            
-            // 控制空格：首个数字前无空格，后续加空格
-            if (count > 0) {
-                printf(" ");
+    int n, i = 2;
+    int is_prime = 1;  // 假设是质数
+    
+    // 接收输入
+    scanf("%d", &n);
+    
+    // 判断是否为质数（用while循环）
+    if (n <= 1) {
+        is_prime = 0;  // 1及以下不是质数
+    } else {
+        // while循环检查从2到n-1是否有因子
+        while (i < n) {
+            if (n % i == 0) {
+                is_prime = 0;
+                break;  // 找到因子，跳出循环
             }
-            printf("%d", num);
-            count++;
+            i++;
         }
-
-        num++;  // 循环变量自增
     }
-    printf("\n");  // 结束后换行
-
+    
+    // 输出结果
+    if (is_prime) {
+        printf("密钥安全，密码设置成功\n");
+    } else {
+        printf("密钥不安全，请重新输入\n");
+    }
+    
     return 0;
 }
