@@ -3,22 +3,33 @@
 //张博阳
 #include <stdio.h>
 
-int main() {
-    
-    int score;
-    // 输入成绩
-    scanf("%d", &score);
-    // 从高分到低分判断等级
-    if (score >= 90 && score <= 100) {
-        printf("A\n");
-    } else if (score >= 80 && score <= 89) {
-        printf("B\n");
-    } else if (score >= 70 && score <= 79) {
-        printf("C\n");
-    } else if (score >= 60 && score <= 69) {
-        printf("D\n");
-    } else if (score >= 0 && score < 60) {
-        printf("E\n");
+int main()
+{
+    int num, hundreds, tens, units;
+    int count = 0;  // 用于控制空格输出
+
+    // 遍历100到999的所有整数
+    for (num = 100; num <= 999; num++) 
+    {
+        // 拆分百位、十位、个位
+        hundreds = num / 100;          // 百位数字
+        tens = (num / 10) % 10;        // 十位数字
+        units = num % 10;              // 个位数字
+
+        // 判断是否为水仙花数（各位立方和等于自身）
+        if (hundreds * hundreds * hundreds + tens * tens * tens + units * units * units == num) 
+        {
+            
+            // 控制输出格式：首个数字前无空格，后续数字前加空格
+            if (count > 0) 
+            {
+                printf(" ");
+            }
+            printf("%d", num);
+            count++;
+        }
     }
+    printf("\n");  // 输出结束后换行
+
     return 0;
 }
