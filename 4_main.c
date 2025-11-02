@@ -3,34 +3,26 @@
 //张博阳
 #include <stdio.h>
 
-int main() {
-    int num = 100;  // 从100开始遍历
-    int hundreds, tens, units;
-    int count = 0;  // 控制空格输出
-
-    // while循环遍历100到999
-    while (num <= 999) {
-        // 拆分百位、十位、个位
-        hundreds = num / 100;
-        tens = (num / 10) % 10;
-        units = num % 10;
-
-        // 判断水仙花数（各位立方和等于自身）
-        if (hundreds * hundreds * hundreds + 
-            tens * tens * tens + 
-            units * units * units == num) {
-            
-            // 控制空格：首个数字前无空格，后续加空格
-            if (count > 0) {
-                printf(" ");
-            }
-            printf("%d", num);
-            count++;
-        }
-
-        num++;  // 循环变量自增
+// 计算a的b次幂的函数
+double power(int a, int b) {
+    double result = 1.0;
+    // 处理b为0的情况（任何数的0次幂为1）
+    if (b == 0) {
+        return 1;
     }
-    printf("\n");  // 结束后换行
+    // 计算正整数次幂
+    for (int i = 0; i < b; i++) {
+        result *= a;
+    }
+    return result;
+}
 
+int main() {
+    int sum = 0;
+    // 计算1² + 2² + 3² + 4² + 5²
+    for (int i = 1; i <= 5; i++) {
+        sum += power(i, 2);  // 调用幂函数计算平方
+    }
+    printf("1² + 2² + 3² + 4² + 5² = %d\n", sum);
     return 0;
 }
