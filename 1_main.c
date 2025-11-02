@@ -2,9 +2,6 @@
 //751127773@qq.com
 //张博阳
 #include <stdio.h>
-
-#include <stdio.h>
-
 int main() {
     int matrix[3][3];
     
