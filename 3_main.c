@@ -4,32 +4,35 @@
 #include <stdio.h>
 
 int main() {
-    int n, i = 2;
-    int is_prime = 1;  // 假设是质数
-    
-    // 接收输入
-    scanf("%d", &n);
-    
-    // 判断是否为质数（用while循环）
-    if (n <= 1) {
-        is_prime = 0;  // 1及以下不是质数
-    } else {
-        // while循环检查从2到n-1是否有因子
-        while (i < n) {
-            if (n % i == 0) {
-                is_prime = 0;
-                break;  // 找到因子，跳出循环
+    int arr[10];
+    int i, j, temp;
+
+    // 输入10个数
+    printf("请输入10个整数：\n");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // 冒泡排序（从小到大）
+    // 外层循环控制排序轮数，共需要n-1轮（n为元素个数）
+    for (i = 0; i < 9; i++) {
+        // 内层循环控制每轮比较次数，每轮减少一次比较（已排好的元素无需再比较）
+        for (j = 0; j < 9 - i; j++) {
+            // 如果前一个数大于后一个数，则交换它们
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
-            i++;
         }
     }
-    
-    // 输出结果
-    if (is_prime) {
-        printf("密钥安全，密码设置成功\n");
-    } else {
-        printf("密钥不安全，请重新输入\n");
+
+    // 输出排序结果
+    printf("排序后的结果为：\n");
+    for (i = 0; i < 10; i++) {
+        printf("%d ", arr[i]);
     }
-    
+    printf("\n");
+
     return 0;
 }
