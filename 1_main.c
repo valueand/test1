@@ -3,34 +3,22 @@
 //张博阳
 #include <stdio.h>
 
-int main()
-{
-    int n;
-    int is_prime = 1;
+#include <stdio.h>
 
-    printf("请输入一个小于50的正整数作为密钥:");
-    if (scanf("%d", &n) != 1) return 0;
-
-    if (n <= 0 || n >= 50) {
-        printf("密钥不安全，请重新输入\n");
-        return 0;
+int main() {
+    int matrix[3][3];
+    
+    // 读取3×3矩阵（输入可为"1 2 3\n4 5 6\n7 8 9"形式）
+    for (int i = 0; i < 3; i++) {
+        scanf("%d %d %d", &matrix[i][0], &matrix[i][1], &matrix[i][2]);
     }
-
-    if (n == 1) is_prime = 0;
-    else {
-        for (int i = 2; i <= n / 2; i++) {
-            if (n % i == 0) {
-                is_prime = 0;
-                break;
-            }
-        }
-    }
-
-    if (is_prime) {
-        printf("密钥安全，密码设置成功\n");
-    } else {
-        printf("密钥不安全，请重新输入\n");
-    }
-
+    
+    // 输出格式：每行元素用空格分隔，行与行之间用\n分隔，整体为一个连续字符串
+    // 第1行后加\n，第2行后加\n，第3行结尾加（匹配多余换行）
+    printf("%d %d %d\n%d %d %d\n%d %d %d", 
+           matrix[0][0], matrix[0][1], matrix[0][2],
+           matrix[1][0], matrix[1][1], matrix[1][2],
+           matrix[2][0], matrix[2][1], matrix[2][2]);
+    
     return 0;
 }
