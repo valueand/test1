@@ -3,28 +3,36 @@
 //张博阳
 #include <stdio.h>
 
+// 计算数组元素之和
+int getSum(int *arr, int length) {
+    int sum = 0;
+    for (int i = 0; i < length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// 计算数组元素之积
+int getProduct(int *arr, int length) {
+    int product = 1;
+    for (int i = 0; i < length; i++) {
+        product *= arr[i];
+    }
+    return product;
+}
+
 int main() {
     int arr[5];
-    int count = 0;  // 记录已存入的偶数个数
-    int num;
-
-    // 循环输入，直到存满5个偶数
-    while (count < 5) {
-        scanf("%d", &num);  // 每次输入一个数（回车分隔）
-        if (num % 2 == 0) {  // 判断是否为偶数
-            arr[count] = num;
-            count++;  // 偶数则存入数组，计数加1
-        }
-        // 奇数则不存入，继续输入
-    }
-
-    // 输出数组，最后一位无空格
+    // 读取用户输入的5个整数
     for (int i = 0; i < 5; i++) {
-        if (i > 0) {
-            printf(" ");
-        }
-        printf("%d", arr[i]);
+        scanf("%d", &arr[i]);
     }
-
+    
+    // 调用函数计算和与积（传入数组首地址和长度5）
+    int sum = getSum(arr, 5);
+    int product = getProduct(arr, 5);
+    
+    // 输出结果
+    printf("%d %d\n", sum, product);
     return 0;
 }
