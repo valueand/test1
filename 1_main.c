@@ -9,7 +9,7 @@ int main() {
     for (int i = 0; i < 3; i++) {
         scanf("%d %d %d", &matrix[i][0], &matrix[i][1], &matrix[i][2]);
     }
-    
+     
     // 输出格式：每行元素用空格分隔，行与行之间用\n分隔，整体为一个连续字符串
     // 第1行后加\n，第2行后加\n，第3行结尾加（匹配多余换行）
     printf("%d %d %d\n%d %d %d\n%d %d %d", 
