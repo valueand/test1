@@ -3,33 +3,35 @@
 //张博阳
 #include <stdio.h>
 
-int main()
-{
-    int num, hundreds, tens, units;
-    int count = 0;  // 用于控制空格输出
+int main() {
+    int matrix[3][3];
+    int transposed[3][3];
+    int i, j;
 
-    // 遍历100到999的所有整数
-    for (num = 100; num <= 999; num++) 
-    {
-        // 拆分百位、十位、个位
-        hundreds = num / 100;          // 百位数字
-        tens = (num / 10) % 10;        // 十位数字
-        units = num % 10;              // 个位数字
-
-        // 判断是否为水仙花数（各位立方和等于自身）
-        if (hundreds * hundreds * hundreds + tens * tens * tens + units * units * units == num) 
-        {
-            
-            // 控制输出格式：首个数字前无空格，后续数字前加空格
-            if (count > 0) 
-            {
-                printf(" ");
-            }
-            printf("%d", num);
-            count++;
+    // 输入3x3矩阵
+    printf("请输入3x3矩阵（每行3个数字，用空格分隔）：\n");
+    for (i = 0; i < 3; i++) {
+        printf("第%d行：", i + 1);
+        for (j = 0; j < 3; j++) {
+            scanf("%d", &matrix[i][j]);
         }
     }
-    printf("\n");  // 输出结束后换行
+
+    // 计算转置矩阵：原矩阵的[i][j]对应转置矩阵的[j][i]
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            transposed[i][j] = matrix[j][i];
+        }
+    }
+
+    // 输出转置矩阵
+    printf("\n转置后的矩阵为：\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", transposed[i][j]);
+        }
+        printf("\n"); // 每行结束后换行
+    }
 
     return 0;
 }
