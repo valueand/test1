@@ -3,31 +3,36 @@
 //张博阳
 #include <stdio.h>
 
+// 反转数组元素位置的函数
+void reverseArray(int *arr, int length) {
+    // 循环交换对称位置的元素
+    for (int i = 0; i < length / 2; i++) {
+        // 交换第i个和第length-1-i个元素
+        int temp = arr[i];
+        arr[i] = arr[length - 1 - i];
+        arr[length - 1 - i] = temp;
+    }
+}
+
 int main() {
     int arr[5];
-    int i;
-
-    // 输入当前记录的前4位学号
-    for (i = 0; i < 4; i++) {
+    // 读取用户输入的5个整数
+    for (int i = 0; i < 5; i++) {
         scanf("%d", &arr[i]);
     }
-
-    // 数组元素整体后移一位（原第4位→第5位）
-    arr[4] = arr[3];  // 第4位移到第5位
-    arr[3] = arr[2];  // 第3位移到第4位
-    arr[2] = arr[1];  // 第2位移到第3位
-    arr[1] = arr[0];  // 第1位移到第2位
-
-    // 首位补0
-    arr[0] = 0;
-
-    // 输出更新后的数组，最后一位无空格
-    for (i = 0; i < 5; i++) {
-        if (i > 0) {
-            printf(" ");
+    
+    // 调用反转函数（传入数组首地址和长度5）
+    reverseArray(arr, 5);
+    
+    // 输出反转后的数组（最后一个元素后无空格）
+    for (int i = 0; i < 5; i++) {
+        if (i == 4) {
+            printf("%d", arr[i]);  // 最后一个元素单独输出，无空格
+        } else {
+            printf("%d ", arr[i]);
         }
-        printf("%d", arr[i]);
     }
-
+    printf("\n");
+    
     return 0;
 }
