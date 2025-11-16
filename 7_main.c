@@ -3,36 +3,37 @@
 //张博阳
 #include <stdio.h>
 
-// 反转数组元素位置的函数
-void reverseArray(int *arr, int length) {
-    // 循环交换对称位置的元素
-    for (int i = 0; i < length / 2; i++) {
-        // 交换第i个和第length-1-i个元素
-        int temp = arr[i];
-        arr[i] = arr[length - 1 - i];
-        arr[length - 1 - i] = temp;
+// 冒泡排序函数：使用指针操作实现从小到大排序
+void bubbleSort(int *arr, int len) {
+    // 外层循环控制排序轮次（共len-1轮）
+    for (int i = 0; i < len - 1; i++) {
+        // 内层循环控制每轮比较次数（每轮减少一次比较）
+        for (int j = 0; j < len - 1 - i; j++) {
+            // 通过指针访问相邻元素并比较
+            if (*(arr + j) > *(arr + j + 1)) {
+                // 交换相邻元素（通过指针操作）
+                int temp = *(arr + j);
+                *(arr + j) = *(arr + j + 1);
+                *(arr + j + 1) = temp;
+            }
+        }
     }
 }
 
 int main() {
-    int arr[5];
-    // 读取用户输入的5个整数
-    for (int i = 0; i < 5; i++) {
-        scanf("%d", &arr[i]);
+    int nums[10];
+    int len = sizeof(nums) / sizeof(nums[0]);
+    for (int i = 0; i < len; i++) {
+        scanf("%d", nums + i); // 指针方式接收输入
     }
-    
-    // 调用反转函数（传入数组首地址和长度5）
-    reverseArray(arr, 5);
-    
-    // 输出反转后的数组（最后一个元素后无空格）
-    for (int i = 0; i < 5; i++) {
-        if (i == 4) {
-            printf("%d", arr[i]);  // 最后一个元素单独输出，无空格
-        } else {
-            printf("%d ", arr[i]);
-        }
+
+    // 调用冒泡排序函数（传递数组首地址和长度）
+    bubbleSort(nums, len);
+
+    // 打印排序结果
+    for (int i = 0; i < len; i++) {
+        printf("%d ", *(nums + i)); // 指针方式访问元素
     }
-    printf("\n");
-    
+
     return 0;
 }
