@@ -2,25 +2,23 @@
 //751127773@qq.com
 //张博阳
 #include <stdio.h>
+int main() 
+{
+    int arr[5];  // 定义包含5个整数的数组
+    int *p = arr;  // 指针指向数组首元素
+    int n = 5;  // 数组元素个数
 
-int main() {
-    int matrix[3][3];
-    // 读取3×3矩阵
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            scanf("%d", &matrix[i][j]);
-        }
+    // 从键盘输入数组元素
+    for (int i = 0; i < n; i++) {
+        scanf("%d", p + i);  // 通过指针接收输入（等价于 &arr[i]）
     }
-    // 输出转置矩阵（控制行尾无多余空格，匹配示例格式）
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (j == 0) {
-                printf("%d", matrix[j][i]); // 第一个元素无前置空格
-            } else {
-                printf(" %d", matrix[j][i]); // 后续元素前加空格
-            }
-        }
-        printf("\n"); // 每行结束换行
+    // 通过指针将所有元素乘以2
+    for (int i = 0; i < n; i++)
+    {
+        *(p + i) *= 2;  // 通过指针修改元素
+    }
+    for (int i = 0; i < n; i++) {
+        printf("%d ", *(p + i));
     }
     return 0;
 }
