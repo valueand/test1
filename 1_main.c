@@ -14,8 +14,7 @@ int main() {
     *p = *p + 10;  // 等价于 a = a + 10
 
     // 打印结果
-    printf("%d\n", a);
-    printf("%d\n", *p);
+    printf("%d,%d", a,*p);
 
     return 0;
 }
