@@ -2,37 +2,30 @@
 //751127773@qq.com
 //张博阳
 #include <stdio.h>
-
-// 计算数组元素之和
-int getSum(int *arr, int length) {
-    int sum = 0;
-    for (int i = 0; i < length; i++) {
-        sum += arr[i];
-    }
-    return sum;
-}
-
-// 计算数组元素之积
-int getProduct(int *arr, int length) {
-    int product = 1;
-    for (int i = 0; i < length; i++) {
-        product *= arr[i];
-    }
-    return product;
-}
+#include <stdlib.h>
 
 int main() {
-    int arr[5];
-    // 读取用户输入的5个整数
-    for (int i = 0; i < 5; i++) {
-        scanf("%d", &arr[i]);
+    // 动态申请存储5个整数的内存空间
+    int *p = (int *)malloc(5 * sizeof(int));
+    
+    // 判断内存申请是否成功
+    if (p == NULL) {
+        printf("内存申请失败，无法继续执行\n");
+        return 1; // 申请失败则退出程序
     }
+    for (int i = 0; i < 5; i++) {
+        // 通过指针接收键盘输入（等价于 &p[i]）
+        scanf("%d", p + i);
+    }
+    for (int i = 0; i < 5; i++) {
+        // 通过指针访问元素（等价于 p[i]）
+        printf("%d ", *(p + i));
+    }
+    printf("\n");
     
-    // 调用函数计算和与积（传入数组首地址和长度5）
-    int sum = getSum(arr, 5);
-    int product = getProduct(arr, 5);
+    // 释放动态申请的内存
+    free(p);
+    p = NULL; // 避免野指针
     
-    // 输出结果
-    printf("%d %d\n", sum, product);
     return 0;
 }
